@@ -205,3 +205,28 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Data artifacts
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Experiment outputs
+results/forecasts/*
+results/metrics/*
+results/figures/*
+!results/forecasts/.gitkeep
+!results/metrics/.gitkeep
+!results/figures/.gitkeep
+
+# Model artifacts
+*.pkl
+*.joblib
+*.pt
+*.pth
+*.h5
+
+# Logs
+logs/
+*.log
