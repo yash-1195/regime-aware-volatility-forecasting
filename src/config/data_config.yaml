@@ -1,0 +1,12 @@
+# Notebook 00 uses this config for file paths and basic schema.
+prices_csv: ../data/raw/prices.csv
+
+schema:
+  date_col: date
+  price_col: adj_close
+
+# For date continuity checks. Common options: null, "B", "D"
+expected_frequency: "B"
+
+# Figure outputs
+figures_dir: ../results/figures/eda
