@@ -209,6 +209,8 @@ __marimo__/
 # Data artifacts
 data/raw/*
 data/processed/*
+!data/raw/
+!data/processed/
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
@@ -216,6 +218,9 @@ data/processed/*
 results/forecasts/*
 results/metrics/*
 results/figures/*
+!results/forecasts/
+!results/metrics/
+!results/figures/
 !results/forecasts/.gitkeep
 !results/metrics/.gitkeep
 !results/figures/.gitkeep
