@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Optional
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -19,7 +20,7 @@ import pandas as pd
 class ReturnConfig:
     price_col: str = "price"
     return_col: str = "log_return"
-    squared_return_col: str = "$r_2$"
+    squared_return_col: str = "squared_return"
     eps: float = 1e-12
 
 
@@ -76,3 +77,26 @@ def check_date_continuity(
     info["missing_n"] = len(missing)
     info["missing_head"] = missing[:10].to_list()
     return info
+
+def save_processed_returns(
+    data: pd.DataFrame,
+    return_col: str,
+    squared_return_col: str,
+    output_dir: Path,
+    logger=None
+) -> None:
+    
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Save returns only
+    returns_path = output_dir / "returns.csv"
+    data[[return_col]].to_csv(returns_path)
+    if logger:
+        logger.info(f"Saved returns to: {returns_path}")
+    
+    # Save squared returns only
+    squared_path = output_dir / "squared_returns.csv"
+    data[[squared_return_col]].to_csv(squared_path)
+    if logger:
+        logger.info(f"Saved squared returns to: {squared_path}")

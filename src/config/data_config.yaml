@@ -1,6 +1,11 @@
 # Notebook 00 uses this config for file paths and basic schema.
 prices_csv: ../data/raw/prices.csv
 
+# Processed data paths
+processed_dir: "../data/processed"
+returns_csv: "../data/processed/returns.csv"
+squared_returns_csv: "../data/processed/squared_returns.csv"
+
 schema:
   date_col: date
   price_col: adj_close
@@ -9,4 +14,4 @@ schema:
 expected_frequency: "B"
 
 # Figure outputs
-figures_dir: ../results/figures/eda
+figures_dir: ../results/figures

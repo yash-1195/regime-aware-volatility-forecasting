@@ -41,29 +41,15 @@ def download_sp500(
     if prices.empty:
         raise RuntimeError("yfinance returned an empty DataFrame.")
 
-    # Ensure flat columns
-    prices = prices.copy()
-    prices.columns = [c.lower().replace(" ", "_") for c in prices.columns]
-
-
     # Defensive check against unexpected multi-index
     if isinstance(prices.columns, pd.MultiIndex):
         prices.columns = prices.columns.get_level_values(0)
 
-    prices = prices.reset_index().rename(columns={"date": "date"})
+    prices = prices.reset_index()
 
-    expected = {
-        "date",
-        "open",
-        "high",
-        "low",
-        "close",
-        "adj_close",
-        "volume",
-    }
-    missing = expected.difference(prices.columns)
-    if missing:
-        raise ValueError(f"Missing expected columns after download: {missing}")
+    # Ensure flat columns
+    prices = prices.copy()
+    prices.columns = [c.lower().replace(" ", "_") for c in prices.columns]
 
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
