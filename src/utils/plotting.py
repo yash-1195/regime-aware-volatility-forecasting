@@ -5,6 +5,7 @@ Plotting helpers.
 from __future__ import annotations
 from pathlib import Path
 from typing import Optional, Tuple, Dict
+from src.utils.io import ensure_dir
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
